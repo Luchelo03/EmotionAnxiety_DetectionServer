@@ -36,4 +36,5 @@ def upload_video():
     return jsonify(average_emotions)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Usar el puerto 5000 como predeterminado
+    app.run(host="0.0.0.0", port=port, debug=True)
