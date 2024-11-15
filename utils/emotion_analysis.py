@@ -2,7 +2,7 @@ import numpy as np
 import tensorflow as tf
 import cv2
 
-# Cargar el modelo TFLite
+# Cargar el modelo entrenado
 interpreter = tf.lite.Interpreter(model_path="models/model.tflite")
 interpreter.allocate_tensors()
 
@@ -11,7 +11,7 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # Lista de etiquetas de emociones
-emotions_labels = ["surprise", "fear", "angry", "neutral", "sad", "disgust", "happy"]
+emotions_labels = ["Sorpresa", "Miedo", "Enojado", "Neutral", "Triste", "Disgustado", "Feliz"]
 
 def predict_emotion(frame):
     # Redimensionar y normalizar el frame
