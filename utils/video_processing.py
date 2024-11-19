@@ -1,3 +1,5 @@
+import os
+os.environ['OPENCV_IO_MAX_IMAGE_PIXELS'] = pow(2,40).__str__()
 import cv2
 
 # Cargar los clasificadores Haar
