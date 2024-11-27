@@ -7,6 +7,7 @@ from utils.emotion_analysis import analyze_emotions, emotions_labels  # Importar
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads"
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Deshabilitar la GPU en TensorFlow
 
 @app.route("/upload_video", methods=["POST"])
 def upload_video():
@@ -37,4 +38,4 @@ def upload_video():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Usar el puerto 5000 como predeterminado
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=True, use_reloader=True, threaded=True)
