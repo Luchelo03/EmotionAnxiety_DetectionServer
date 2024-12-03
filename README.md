@@ -14,7 +14,7 @@ Antes de comenzar, asegúrate de tener los siguientes requisitos:
 
 - **Node.js**: Necesario para instalar LocalTunnel.
 - **LocalTunnel**: Utilizado para exponer la API a través de una URL pública.
-- **FFmpeg**: Necesario para procesar el audio de los videos. Sigue estos pasos según tu sistema operativo
+- **FFmpeg**: Necesario para procesar el audio de los videos.
 
 ### Instalación de LocalTunnel
 1. Instala Node.js desde [aquí](https://nodejs.org/) si aún no lo tienes.
