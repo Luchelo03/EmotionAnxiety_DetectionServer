@@ -25,7 +25,7 @@ Antes de comenzar, asegúrate de tener los siguientes requisitos:
 
 1. **Clona el repositorio**
    ```bash
-   git clone https://github.com/JeanDev11/Servidor-AnalisisEmocional.git
+   git clone https://github.com/Luchelo03/EmotionAnxiety_DetectionServer.git
 
 2. **Crear un entorno virtual**
    Es recomendable usar Python 3.10.11
@@ -52,16 +52,19 @@ curl -X POST https://your-localtunnel-url/upload_video \
 ```
 
 ### Respuesta
-El servidor responderá con un JSON que contiene los porcentajes de emociones detectadas en el video.
+El servidor responderá con un JSON que contiene las probabilidades de las emociones y el grado de ansiedad detectado en el video.
 ```bash
 {
-  "Disgustado": 0.00028,
-  "Enojado": 0.00026,
-  "Feliz": 0.98078,
-  "Miedo": 0.00016,
-  "Neutral": 0.01650,
-  "Sorpresa": 0.00124,
-  "Triste": 0.00075
+    "anxiety_level": "medio",
+    "emotions": {
+        "Disgustado": 0.07337517254750862,
+        "Enojado": 0.008421605015759712,
+        "Feliz": 0.004282982257680946,
+        "Miedo": 0.04533363842346321,
+        "Neutral": 0.36616330761810606,
+        "Sorpresa": 0.25069469857088367,
+        "Triste": 0.2517285991947506
+    }
 }
 ```
 
