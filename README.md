@@ -1,6 +1,6 @@
 # Servidor de Análisis Emocional
 
-Este proyecto utiliza **Flask** y **TensorFlow** para analizar emociones en videos. El modelo de machine learning procesa los videos y devuelve un porcentaje de las emociones detectadas. El servidor se expone mediante una API REST que puede ser consumida por aplicaciones móviles o web.
+Este proyecto utiliza **Flask** y **TensorFlow** para analizar emociones en videos. El modelo de machine learning procesa los videos y devuelve el porcentaje de las emociones y el grado de ansiedad detectado. El servidor se expone mediante una API REST que puede ser consumida por aplicaciones móviles o web.
 
 ## Funcionalidades
 
@@ -14,12 +14,16 @@ Antes de comenzar, asegúrate de tener los siguientes requisitos:
 
 - **Node.js**: Necesario para instalar LocalTunnel.
 - **LocalTunnel**: Utilizado para exponer la API a través de una URL pública.
+- **FFmpeg**: Necesario para procesar el audio de los videos. Sigue estos pasos según tu sistema operativo
 
 ### Instalación de LocalTunnel
 1. Instala Node.js desde [aquí](https://nodejs.org/) si aún no lo tienes.
 2. Luego, instala LocalTunnel globalmente con el siguiente comando:
    ```bash
    npm install -g localtunnel
+
+### Instalación de FFmpeg
+Guíate de este [video](https://www.youtube.com/watch?v=0zN9oZ98ZgE) para su correcta instalación.
 
 ## Instalación
 
