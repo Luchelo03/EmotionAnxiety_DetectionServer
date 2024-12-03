@@ -1,6 +1,10 @@
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 import os
+
+import subprocess
+from utils.audio_analysis import predict_anxiety  # Importar la función de audio
+
 from utils.video_processing import process_video_frames
 from utils.emotion_analysis import analyze_emotions, emotions_labels  # Importar emotions_labels
 
@@ -33,8 +37,27 @@ def upload_video():
             probs_str = ", ".join([f"{emotions_labels[j]}: {probs[j]:.4f}" for j in range(len(probs))])
             f.write(f"Frame {i + 1}: {probs_str}\n")
 
+    # Extraer el audio del video
+    audio_path = os.path.join(app.config["UPLOAD_FOLDER"], "extracted_audio.wav")
+    try:
+        subprocess.run(["ffmpeg", "-i", video_path, "-q:a", "0", "-map", "a", audio_path, "-y"], check=True)
+    except Exception as e:
+        return jsonify({"error": "Failed to extract audio", "details": str(e)}), 500
+
+    # Analizar el nivel de ansiedad en el audio
+    anxiety_level = predict_anxiety(audio_path)
+
     os.remove(video_path)  # Eliminar el video después de procesarlo
-    return jsonify(average_emotions)
+    os.remove(audio_path)
+
+    # Combinar resultados
+    response = {
+        "emotions": average_emotions,
+        "anxiety_level": anxiety_level
+    }
+
+    return jsonify(response)
+    #return jsonify(average_emotions)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Usar el puerto 5000 como predeterminado
